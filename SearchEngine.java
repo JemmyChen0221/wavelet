@@ -15,8 +15,10 @@ class Handler implements URLHandler {
             String[] parameters = url.getQuery().split("=");
             if (parameters[0].equals("s")) {
                 list.add(parameters[1]);
+                return "added";
             }
-            return "added";
+            return "Not Added";
+
         }
         else {
             if (url.getPath().contains("/search")) {
@@ -32,7 +34,7 @@ class Handler implements URLHandler {
                     
                 }
             }
-            return "Try to Add Something!";
+            return "Try to Add or Search Something!";
         }
     }
 }

@@ -15,26 +15,40 @@ class Handler implements URLHandler {
             String[] parameters = url.getQuery().split("=");
             if (parameters[0].equals("s")) {
                 list.add(parameters[1]);
-                return "added";
+                return list.get(0);
+
             }
             return "Not Added";
+
+        }else if(url.getPath().contains("/show")){
+            String word = "";
+            return word;
+            /*for(int i = 0; i < list.size();i ++){
+                word = word + "," + list.get(i);
+            }
+            return word;*/
 
         }
         else {
             if (url.getPath().contains("/search")) {
-                String[] parameters = url.getQuery().split("=");
-                if (parameters[0].equals("s")) {
-                    //ArrayList<String> toReturn = new ArrayList<String>();
-                    //String tocheck = parameters[1];
-
-                    for(String ele:list){
-                        return ele;
+                String[] para = url.getQuery().split("=");
+                if (para[0].equals("s")) {
+                    String check = para[1];
+                    String output = "";
+                    for(int i = 0; i < list.size(); i++){
+                        if(list.get(i).contains(check)){
+                            return "found";
+                        }
                     }
 
                     
+                    //return String.valueOf(count);
                 }
+            } else{
+                return "Try to Add or Search Something!";
             }
-            return "Try to Add or Search Something!";
+            return "Welcome";
+            
         }
     }
 }

@@ -29,11 +29,13 @@ class Handler implements URLHandler {
                             output = output + ", " + list.get(i);
                         }
                     }
-
-                    
-                    //return String.valueOf(count);
                 }
-                return output.substring(1);
+                if(output != ""){
+                    return output.substring(1).strip();
+                
+                } else{
+                    return "Nothing Found";
+                }
             } else{
                 return "Try to Add or Search Something!";
             }
